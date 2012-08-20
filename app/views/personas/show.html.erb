@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombres:</b>
+  <%= @persona.nombres %>
+</p>
+
+<p>
+  <b>Apellidos:</b>
+  <%= @persona.apellidos %>
+</p>
+
+<p>
+  <b>Edad:</b>
+  <%= @persona.edad %>
+</p>
+
+<p>
+  <b>Dependientes:</b>
+  <% @persona.dependientes.each do |dependiente| %>
+    <%= dependiente.apellidos %>, <%= dependiente.nombres %> // 
+  <% end %>
+</p>
+
+<%= form_for [@persona, Dependiente.new] do |a| %>  
+  <p><%= a.label :nombres %> <%= a.text_field :nombres %></p>  
+  <p><%= a.label :apellidos %> <%= a.text_field :apellidos %></p>
+  <p><%= a.submit %></p>
+<% end %> 
+
+
+<%= link_to 'Edit', edit_persona_path(@persona) %> |
+<%= link_to 'Back', personas_path %>
